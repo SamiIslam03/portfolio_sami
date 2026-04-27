@@ -2,7 +2,7 @@ PWD /Users/samiislam/Downloads/SAMI CV/cv
 INPUT /usr/local/texlive/2025basic/texmf.cnf
 INPUT /usr/local/texlive/2025basic/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2025basic/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT cv.tex
+INPUT /Users/samiislam/Downloads/SAMI CV/cv/cv.tex
 OUTPUT cv.log
 INPUT /usr/local/texlive/2025basic/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2025basic/texmf-dist/tex/latex/base/article.cls
