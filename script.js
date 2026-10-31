@@ -1,6 +1,3 @@
-// ===========================
-// CURSOR GLOW
-// ===========================
 const cursorGlow = document.getElementById('cursorGlow');
 
 if (window.matchMedia('(pointer: fine)').matches) {
@@ -10,16 +7,12 @@ if (window.matchMedia('(pointer: fine)').matches) {
     });
 }
 
-// ===========================
-// NAVBAR
-// ===========================
 const navbar = document.getElementById('navbar');
 
 window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// Mobile toggle
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
 
@@ -35,7 +28,6 @@ navLinks.querySelectorAll('a').forEach(link => {
     });
 });
 
-// Active nav link
 const sections = document.querySelectorAll('section[id]');
 
 function updateActiveNav() {
@@ -53,17 +45,13 @@ function updateActiveNav() {
 
 window.addEventListener('scroll', updateActiveNav);
 
-// ===========================
-// SCROLL REVEAL
-// ===========================
 const revealElements = document.querySelectorAll('.reveal');
 
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            
-            // Counter animation for stat numbers
+
             entry.target.querySelectorAll('.stat-num').forEach(animateCounter);
         }
     });
@@ -74,39 +62,33 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 revealElements.forEach(el => revealObserver.observe(el));
 
-// ===========================
-// COUNTER ANIMATION
-// ===========================
 function animateCounter(el) {
     if (el.dataset.animated) return;
     el.dataset.animated = true;
-    
+
     const target = parseFloat(el.dataset.count);
     const isDecimal = target % 1 !== 0;
     const duration = 1800;
     const startTime = performance.now();
-    
+
     function update(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3); // cubic ease-out
+        const eased = 1 - Math.pow(1 - progress, 3);
         const current = eased * target;
-        
+
         el.textContent = isDecimal ? current.toFixed(2) : Math.floor(current);
-        
+
         if (progress < 1) {
             requestAnimationFrame(update);
         } else {
             el.textContent = isDecimal ? target.toFixed(2) : target;
         }
     }
-    
+
     requestAnimationFrame(update);
 }
 
-// ===========================
-// VIDEO HOVER PLAY
-// ===========================
 document.querySelectorAll('.case-card').forEach(card => {
     const video = card.querySelector('video');
     if (video) {
@@ -115,7 +97,6 @@ document.querySelectorAll('.case-card').forEach(card => {
     }
 });
 
-// Play video button
 document.querySelectorAll('.play-video-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -135,14 +116,10 @@ document.querySelectorAll('.play-video-btn').forEach(btn => {
     });
 });
 
-// ===========================
-// LIGHTBOX
-// ===========================
 const lightbox = document.getElementById('lightbox');
 const lightboxContent = document.getElementById('lightboxContent');
 const lightboxClose = document.querySelector('.lightbox-close');
 
-// Video lightbox
 document.querySelectorAll('.play-btn[data-video]').forEach(btn => {
     btn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -153,7 +130,6 @@ document.querySelectorAll('.play-btn[data-video]').forEach(btn => {
     });
 });
 
-// Image lightbox
 document.querySelectorAll('.expand-img-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -180,9 +156,6 @@ lightboxClose.addEventListener('click', closeLightbox);
 lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 
-// ===========================
-// SMOOTH SCROLL
-// ===========================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
