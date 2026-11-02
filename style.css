@@ -445,7 +445,6 @@ img, video { max-width: 100%; display: block; }
 }
 
 .case-media--screenshot { align-self: center; }
-.case-media--screenshot img { object-fit: contain; }
 
 .case-overlay {
     position: absolute;
